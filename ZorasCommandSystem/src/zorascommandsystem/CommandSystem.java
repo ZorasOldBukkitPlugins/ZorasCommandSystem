@@ -10,6 +10,9 @@ import java.util.Set;
 
 public class CommandSystem<T>
 {
+	/**
+	 * Constructor for the command system
+	 */
 	public CommandSystem()
 	{
 		commands = new HashMap<String[], T>();
@@ -17,10 +20,35 @@ public class CommandSystem<T>
 
 	private final Map<String[], T> commands;
 
+	/**
+	 * Registers a command. Make sure your cmdString is not null and not empty!
+	 * 
+	 * @param cmdString
+	 *            The format for the command to be referenced with by the user.
+	 *            For example, if I wanted to bind a command executor to the
+	 *            command "help", I would put "help" in the cmdString argument.
+	 *            If I wanted to bind another command executor to
+	 *            "help something", then I could type that in, and the system
+	 *            would be able to distinguish between if the user wanted the
+	 *            general help, or the help for 'something'. Maybe 'something'
+	 *            goes under more than one name. Then you can put 'help
+	 *            {something|stuff}', and it would point both 'help something'
+	 *            and 'help stuff' to the same command. Maybe you're one of
+	 *            those people who likes to have the page numbers before the
+	 *            arguments. The command system supports wildcards, so you could
+	 *            register 'help * {something|stuff}', and whatever the user put
+	 *            in place of the asterisk will be added to the preArgs
+	 *            parameter that will be explained later on.
+	 * @param cmd The command executor
+	 * @return A set of the first word in the commands that were registered. For
+	 *            for instance, if you registered '{a|b|c|d} some * stuff' to a 
+	 *            command, then a set containing 'a', 'b', 'c', 'd' would be
+	 *            returned.
+	 */
 	public Set<String> registerCommand(final String cmdString, final T cmd)
 	{
 		Set<String> registeredCommandNames = new HashSet<String>();
-		
+
 		// make sure the cmdString isn't empty ("")
 		if (cmdString.length() <= 0)
 		{
@@ -33,10 +61,17 @@ public class CommandSystem<T>
 			commands.put(possibilities[ii], cmd);
 			registeredCommandNames.add(possibilities[ii][0]);
 		}
-		
+
 		return registeredCommandNames;
 	}
 
+	/**
+	 * Gets and parses command info given a string
+	 * @param cmdMessage The string that the user has inputted.
+	 * @return A {@link zorascommandsystem.CommandPackage CommandPackage} containing
+	 *            various info about the command, including the executor itself, ready 
+	 *            to be run.
+	 */
 	public CommandPackage<T> makeCommandPackage(String cmdMessage)
 	{
 		String[] parts = cmdMessage.split(" ");
@@ -76,19 +111,24 @@ public class CommandSystem<T>
 						args.add(parts[ii]);
 					}
 				}
-				
-				CommandPackage<T> pack = new CommandPackage<T>(commands.get(bestMatchString), bestMatchString[0], preArgs.toArray(new String[preArgs.size()]), args.toArray(new String[args.size()]));
-				
-				return pack;
-				
-//				this.executeCommand(commands.get(bestMatchString), preArgs.toArray(new String[preArgs.size()]), args.toArray(new String[args.size()]));
 
-//				return commands.get(bestMatchString).onCommand(preArgs.toArray(new String[preArgs.size()]), args.toArray(new String[args.size()]));
+				CommandPackage<T> pack = new CommandPackage<T>(commands.get(bestMatchString), bestMatchString[0], preArgs.toArray(new String[preArgs.size()]), args.toArray(new String[args.size()]));
+
+				return pack;
+
+				// this.executeCommand(commands.get(bestMatchString),
+				// preArgs.toArray(new String[preArgs.size()]), args.toArray(new
+				// String[args.size()]));
+
+				// return
+				// commands.get(bestMatchString).onCommand(preArgs.toArray(new
+				// String[preArgs.size()]), args.toArray(new
+				// String[args.size()]));
 			}
 			else
 			{
 				// command not found!
-//				System.out.println("command not found!");
+				// System.out.println("command not found!");
 			}
 		}
 		else
@@ -96,7 +136,7 @@ public class CommandSystem<T>
 			// command cannot be empty!
 			// Log.error("command cannot be empty!!!");
 		}
-		
+
 		return new CommandPackage<T>();
 	}
 
@@ -144,11 +184,11 @@ public class CommandSystem<T>
 	 */
 	private static int getMatchingArgs(String[] known, String[] toVerify)
 	{
-		if(toVerify.length < known.length)
+		if (toVerify.length < known.length)
 		{
 			return 0;
 		}
-		
+
 		int matchingArgs = 0;
 		for (int ii = 0; ii < known.length; ii++)
 		{
@@ -165,7 +205,7 @@ public class CommandSystem<T>
 			}
 			else
 			{
-				//We're done here
+				// We're done here
 				break;
 			}
 		}
