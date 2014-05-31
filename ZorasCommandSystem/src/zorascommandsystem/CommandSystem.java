@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-public abstract class CommandSystem<T>
+public class CommandSystem<T>
 {
 	public CommandSystem()
 	{
