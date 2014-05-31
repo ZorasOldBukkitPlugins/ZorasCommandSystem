@@ -51,20 +51,14 @@ public class BukkitCommandSystem extends CommandSystem<CSBukkitCommand> implemen
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String alias, String[] args)
 	{
-		System.out.println("on command!");
-		
-		System.out.println("creating command string");
 		StringBuilder commandString = new StringBuilder();
 		commandString.append(cmd.getName()).append(" ");
 		for(int ii = 0; ii < args.length; ii++)
 		{
 			commandString.append(args[ii]).append(" ");
-			System.out.println("appending " + args[ii]);
 		}
 		commandString.setLength(commandString.length() - 1);
-		System.out.println("command finished");
 		
-		System.out.println("requesting command for '" + commandString.toString() + "'");
 		CommandPackage<CSBukkitCommand> pack = super.makeCommandPackage(commandString.toString());
 		
 		if(pack.isNull())
