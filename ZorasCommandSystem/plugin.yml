@@ -1,0 +1,8 @@
+name: ZorasCommandSystem
+version: 0.1.3
+description: Testing the command system
+author: MrZoraman
+main: zorascommandsystem.test.ZorasCommandSystem
+prefix: CS
+commands:
+  '':
