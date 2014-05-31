@@ -38,8 +38,6 @@ public abstract class CommandSystem<T>
 
 	protected CommandPackage<T> makeCommandPackage(String cmdMessage)
 	{
-		System.out.println("recieved cmd string: '" + cmdMessage + "'");
-		
 		String[] parts = cmdMessage.split(" ");
 		// List<String> preArgs = new ArrayList<String>();
 
