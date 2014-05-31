@@ -5,6 +5,7 @@ import java.util.Set;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.PluginCommand;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -20,13 +21,7 @@ public class BukkitCommandSystem extends CommandSystem<CSBukkitCommand> implemen
 	
 	private final JavaPlugin plugin;
 	
-	@Override
 	public Set<String> registerCommand(final String cmdString, final CSBukkitCommand cmd)
-	{
-		return this.registerCommand(cmdString, cmd, false);
-	}
-	
-	public Set<String> registerCommand(final String cmdString, final CSBukkitCommand cmd, boolean override)
 	{
 		if(cmdString == null || cmdString.length() <= 0)
 		{
@@ -34,23 +29,19 @@ public class BukkitCommandSystem extends CommandSystem<CSBukkitCommand> implemen
 		}
 		
 		Set<String> registeredCommandNames = super.registerCommand(cmdString, cmd);
-
-		if(override)
+		
+		for(String cmdName : registeredCommandNames)
 		{
-			
-		}
-		else
-		{
-			for(String cmdName : registeredCommandNames)
+			PluginCommand pluginCmd = null;
+			try
 			{
-				try
-				{
-					plugin.getCommand(cmdName).setExecutor(this);
-				}
-				catch (Exception e)
-				{
-					plugin.getLogger().severe("Failed to register command '" + cmdName + "'! Did you add it to your commands list in the plugin.yml?");
-				}
+				pluginCmd = plugin.getCommand(cmdName);
+				pluginCmd.setExecutor(this);
+			}
+			catch (Exception e)
+			{
+				plugin.getLogger().severe("Failed to register command '" + cmdName + "'! Message to developer: Make sure that you have that command listed under your commands in your plugin.yml!");
+				plugin.getLogger().severe("(Or a conflict might be occurring...)");//TODO: yes?
 			}
 		}
 		
