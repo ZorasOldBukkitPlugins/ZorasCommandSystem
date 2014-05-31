@@ -36,7 +36,7 @@ public class CommandSystem<T>
 		return registeredCommandNames;
 	}
 
-	protected CommandPackage<T> makeCommandPackage(String cmdMessage)
+	public CommandPackage<T> makeCommandPackage(String cmdMessage)
 	{
 		String[] parts = cmdMessage.split(" ");
 		// List<String> preArgs = new ArrayList<String>();
