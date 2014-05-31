@@ -56,6 +56,11 @@ public class CommandParser
 	 */
 	static int getMatchingArgs(String[] known, String[] toVerify)
 	{
+		if(toVerify.length < known.length)
+		{
+			return 0;
+		}
+		
 		int matchingArgs = 0;
 		for (int ii = 0; ii < known.length; ii++)
 		{
@@ -77,6 +82,7 @@ public class CommandParser
 			}
 		}
 
+		System.out.println("returning " + matchingArgs);
 		return matchingArgs;
 	}
 
