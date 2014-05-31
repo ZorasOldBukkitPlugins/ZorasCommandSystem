@@ -82,7 +82,6 @@ public class CommandParser
 			}
 		}
 
-		System.out.println("returning " + matchingArgs);
 		return matchingArgs;
 	}
 
