@@ -82,6 +82,6 @@ public class BukkitCommandSystem extends CommandSystem<CSBukkitCommand> implemen
 	
 	public void sendUnknownCommandMessage(CommandSender sender)
 	{
-		sender.sendMessage("Unknown command!");
+		sender.sendMessage("Unknown command. Type \"help\" for help.");
 	}
 }
