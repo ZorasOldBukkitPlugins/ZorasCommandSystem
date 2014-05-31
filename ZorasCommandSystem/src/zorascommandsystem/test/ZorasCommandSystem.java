@@ -10,7 +10,6 @@ public class ZorasCommandSystem extends JavaPlugin
 	public void onEnable()
 	{
 		BukkitCommandSystem cs = new BukkitCommandSystem(this);
-		getCommand("").setExecutor(cs);
 		
 		cs.registerCommand("some", new TestCommand());
 		cs.registerCommand("maggots", new TestCommand());
