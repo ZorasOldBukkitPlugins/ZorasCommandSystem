@@ -1,5 +1,5 @@
 name: ZorasCommandSystem
-version: 0.2.2
+version: 0.2.3
 description: Testing the command system
 author: MrZoraman
 main: zorascommandsystem.test.ZorasCommandSystem

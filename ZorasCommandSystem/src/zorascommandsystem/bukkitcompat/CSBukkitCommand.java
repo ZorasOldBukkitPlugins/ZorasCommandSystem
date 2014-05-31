@@ -5,5 +5,5 @@ import org.bukkit.entity.Player;
 
 public interface CSBukkitCommand
 {
-	public boolean execute(CommandSender sender, Player player, String[] preArgs, String[] args);
+	public boolean execute(CommandSender sender, Player player, String cmdName, String[] preArgs, String[] args);
 }

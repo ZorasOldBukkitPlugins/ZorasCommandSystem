@@ -17,9 +17,10 @@ public class TestCommand implements CSBukkitCommand
 	}
 
 	@Override
-	public boolean execute(CommandSender sender, Player player, String[] preArgs, String[] args)
+	public boolean execute(CommandSender sender, Player player, String cmdName, String[] preArgs, String[] args)
 	{
 		System.out.println("id: " + id);
+		System.out.println("cmdName: " + cmdName);
 		System.out.println("Command sent!");
 		System.out.println("preArgs: " + Arrays.asList(preArgs).toString());
 		System.out.println("args: " + Arrays.asList(args).toString());

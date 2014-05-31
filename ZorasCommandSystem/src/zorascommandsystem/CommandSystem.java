@@ -76,7 +76,7 @@ public abstract class CommandSystem<T>
 					}
 				}
 				
-				CommandPackage<T> pack = new CommandPackage<T>(commands.get(bestMatchString), preArgs.toArray(new String[preArgs.size()]), args.toArray(new String[args.size()]));
+				CommandPackage<T> pack = new CommandPackage<T>(commands.get(bestMatchString), bestMatchString[0], preArgs.toArray(new String[preArgs.size()]), args.toArray(new String[args.size()]));
 				
 				return pack;
 				
@@ -87,8 +87,7 @@ public abstract class CommandSystem<T>
 			else
 			{
 				// command not found!
-				// Log.info("command not found!!!");
-				System.out.println("command not found!");
+//				System.out.println("command not found!");
 			}
 		}
 		else

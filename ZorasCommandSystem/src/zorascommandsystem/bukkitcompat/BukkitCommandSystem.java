@@ -76,7 +76,7 @@ public class BukkitCommandSystem extends CommandSystem<CSBukkitCommand> implemen
 				player = (Player) sender;
 			}
 			
-			return csCommand.execute(sender, player, pack.getPreArgs(), pack.getArgs());
+			return csCommand.execute(sender, player, pack.getCmdName(), pack.getPreArgs(), pack.getArgs());
 		}
 	}
 	
