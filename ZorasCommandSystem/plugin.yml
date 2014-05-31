@@ -1,8 +1,8 @@
 name: ZorasCommandSystem
-version: 0.2.3
+version: 0.2.4
 description: Testing the command system
 author: MrZoraman
-main: zorascommandsystem.test.ZorasCommandSystem
+main: zorascommandsystem.test.BukkitTest
 prefix: CS
 commands:
   some:

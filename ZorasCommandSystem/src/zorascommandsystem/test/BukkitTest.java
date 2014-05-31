@@ -4,7 +4,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import zorascommandsystem.bukkitcompat.BukkitCommandSystem;
 
-public class ZorasCommandSystem extends JavaPlugin
+public class BukkitTest extends JavaPlugin
 {
 	@Override
 	public void onEnable()
