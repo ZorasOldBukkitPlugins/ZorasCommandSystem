@@ -2,8 +2,10 @@ package zorascommandsystem;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public abstract class CommandSystem<T>
 {
@@ -14,8 +16,10 @@ public abstract class CommandSystem<T>
 
 	private final Map<String[], T> commands;
 
-	public void registerCommand(final String cmdString, final T cmd)
+	public Set<String> registerCommand(final String cmdString, final T cmd)
 	{
+		Set<String> registeredCommandNames = new HashSet<String>();
+		
 		// make sure the cmdString isn't empty ("")
 		if (cmdString.length() <= 0)
 		{
@@ -26,7 +30,10 @@ public abstract class CommandSystem<T>
 		for (int ii = 0; ii < possibilities.length; ii++)
 		{
 			commands.put(possibilities[ii], cmd);
+			registeredCommandNames.add(possibilities[ii][0]);
 		}
+		
+		return registeredCommandNames;
 	}
 
 	protected CommandPackage<T> makeCommandPackage(String cmdMessage)
