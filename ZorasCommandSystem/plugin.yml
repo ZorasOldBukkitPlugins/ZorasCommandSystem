@@ -1,5 +1,5 @@
 name: ZorasCommandSystem
-version: 0.1.8
+version: 0.1.9
 description: Testing the command system
 author: MrZoraman
 main: zorascommandsystem.test.ZorasCommandSystem
@@ -7,4 +7,6 @@ prefix: CS
 commands:
   some:
   maggots:
+  snoo:
+  pingas:
   

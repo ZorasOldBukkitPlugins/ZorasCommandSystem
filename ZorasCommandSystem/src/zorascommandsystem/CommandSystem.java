@@ -88,6 +88,7 @@ public abstract class CommandSystem<T>
 			{
 				// command not found!
 				// Log.info("command not found!!!");
+				System.out.println("command not found!");
 			}
 		}
 		else

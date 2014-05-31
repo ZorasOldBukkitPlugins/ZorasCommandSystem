@@ -51,7 +51,7 @@ public class CommandParser
 	 *            The known correct sequence of arguments
 	 * @param toVerify
 	 *            The arguments being verified against the known args
-	 * @return The amount of args that matched in a row, or -1 if it is not a
+	 * @return The amount of args that matched in a row, or 0 if it is not a
 	 *         match
 	 */
 	static int getMatchingArgs(String[] known, String[] toVerify)
@@ -67,8 +67,13 @@ public class CommandParser
 				}
 				else
 				{
-					return -1;
+					return 0;
 				}
+			}
+			else
+			{
+				//We're done here
+				break;
 			}
 		}
 

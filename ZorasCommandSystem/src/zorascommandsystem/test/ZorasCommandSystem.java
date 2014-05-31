@@ -11,8 +11,9 @@ public class ZorasCommandSystem extends JavaPlugin
 	{
 		BukkitCommandSystem cs = new BukkitCommandSystem(this);
 		
-		cs.registerCommand("some", new TestCommand());
-		cs.registerCommand("maggots", new TestCommand());
+		cs.registerCommand("some stuff", new TestCommand());
+		cs.registerCommand("maggots * {good|bad}", new TestCommand());
+		cs.registerCommand("{snoo|pingas}", new TestCommand());
 	}
 	
 	@Override
